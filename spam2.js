@@ -3,16 +3,16 @@ const client = new Client({ intents: 32767});
 
 
 client.on("ready", () => {
-	client.user.setStatus('invisible')
+	client.user.setStatus('STATUS') // Can be set to 'online','idle' or 'invisible'
 });
 
 const { joinVoiceChannel } = require('@discordjs/voice');
 
 client.on('messageCreate', message => {
-    if(message.content === '!join') {
+    if(message.content === '!join') {	//Can set the message content to be whatever you want for it to join 
         joinVoiceChannel({
-            channelId: '818468119151771658',
-            guildId: '818465058510077962',
+            channelId: 'CHANNEL_ID',	//The voice channel you want the bot to join
+            guildId: 'SERVER_ID',	//The server in which the voice channel is in
 	    selfDeaf: false,
 	    selfMute: false,
             adapterCreator: message.guild.voiceAdapterCreator
@@ -23,4 +23,5 @@ client.on('messageCreate', message => {
     }
 })
 
-client.login("OTI5ODIxMDAwNDAzNjc3MjE1.Yds5SQ.Z1Ey49bLjzp8pi8LmP4D1DRwMaw");
+
+client.login("BOT_TOKEN");	//Enter your Dicord token for another bot
